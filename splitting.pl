@@ -26,4 +26,22 @@ sub split_integer
 	return @a;
 }
 
+# This function accepts a numeric string, assuming that the integer from which
+# it was created was one of the elements returned by split_integer(). It splits
+# the integer in such a way that it can be processed by the english_cardinal()
+# function defined in the lexicalization.sh script.
+sub split_numeric_string
+{
+	my $str = $_[0];
+
+	my @a = ();
+	if ($str =~ /[0-9]00/) {
+		@a = (substr($str, 0, 1), "00");
+	} else {
+		@a = ($str);
+	}
+
+	return @a;
+}
+
 1;
