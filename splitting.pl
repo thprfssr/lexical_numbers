@@ -44,4 +44,23 @@ sub split_numeric_string
 	return @a;
 }
 
+# This function accepts an integer, and returns an array of numeric strings
+# which now need to be passed to english_cardinal().
+sub get_integer_parts
+{
+	my $i = $_[0];
+	my @a = split_integer($i);
+	my @r = ();
+	foreach (@a) {
+		if ($_ == 0) {
+			next;
+		}
+
+		my @z = split_numeric_string("" . $_);
+		@r = (@r, @z);
+	}
+
+	return @r;
+}
+
 1;
