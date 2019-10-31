@@ -107,7 +107,6 @@ EOF
 	a=$(cat $tmpfile)
 	rm $tmpfile
 
-	touch $tmpfile
 	for e in ${a[*]}
 	do
 		echo $(english_cardinal $e)
