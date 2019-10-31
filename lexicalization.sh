@@ -91,3 +91,25 @@ function english_ordinal
 
 	echo $str
 }
+
+function lexicalize
+{
+	i=$1
+	src=./splitting.pl
+	tmpfile=/tmp/alfjlajdflwoebc
+	perl <<-EOF > $tmpfile
+use strict;
+require "$src";
+
+my @a = get_integer_parts($i);
+print "@a";
+EOF
+	a=$(cat $tmpfile)
+	rm $tmpfile
+
+	touch $tmpfile
+	for e in ${a[*]}
+	do
+		echo $(english_cardinal $e)
+	done
+}
