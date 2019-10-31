@@ -25,3 +25,5 @@ sub split_integer
 
 	return @a;
 }
+
+1;
